@@ -114,6 +114,36 @@
             </objects>
             <point key="canvasLocation" x="28.794642857142854" y="82.608695652173921"/>
         </scene>
+        <!--Log In View Controller-->
+        <scene sceneID="Tqy-MX-0dE">
+            <objects>
+                <viewController id="KeT-YH-Csa" customClass="LogInViewController" customModule="PartyWithMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yP3-15-9uQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="1cK-6K-ffb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uSg-tN-Xbr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="861" y="82"/>
+        </scene>
+        <!--Sign In View Controller-->
+        <scene sceneID="bsB-Nr-gKA">
+            <objects>
+                <viewController id="QmT-iy-MJQ" customClass="SignInViewController" customModule="PartyWithMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NzD-2b-7Lu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="RtL-1a-X8e"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k1M-Pz-GcB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1696" y="82"/>
+        </scene>
     </scenes>
     <resources>
         <image name="background" width="1280" height="720"/>
