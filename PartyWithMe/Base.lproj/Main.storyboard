@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--First View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PartyWithMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="first" id="BYZ-38-t0r" customClass="FirstViewController" customModule="PartyWithMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,6 +69,9 @@
                                                 <buttonConfiguration key="configuration" style="filled" title="SIGN IN">
                                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="30"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Awl-ea-kSl"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L37-S4-9Hp">
                                                 <rect key="frame" x="117" y="93" width="180" height="70"/>
@@ -80,6 +83,9 @@
                                                 <buttonConfiguration key="configuration" style="filled" title="LOG IN">
                                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="30"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="logIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NBB-6Q-F73"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -117,32 +123,121 @@
         <!--Log In View Controller-->
         <scene sceneID="Tqy-MX-0dE">
             <objects>
-                <viewController id="KeT-YH-Csa" customClass="LogInViewController" customModule="PartyWithMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" id="KeT-YH-Csa" customClass="LogInViewController" customModule="PartyWithMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yP3-15-9uQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="VqB-wf-MjG" userLabel="login background">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csg-pd-qvl">
+                                <rect key="frame" x="117" y="682" width="180" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="CONTINUE">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="30"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="continueToHome:" destination="KeT-YH-Csa" eventType="touchUpInside" id="ruJ-85-MlU"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" LOG IN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYR-Xg-OOQ">
+                                <rect key="frame" x="105" y="130" width="204" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="1cK-6K-ffb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VqB-wf-MjG" firstAttribute="centerY" secondItem="yP3-15-9uQ" secondAttribute="centerY" id="5kS-nX-OBd"/>
+                            <constraint firstAttribute="bottom" secondItem="VqB-wf-MjG" secondAttribute="bottom" id="664-lm-cua"/>
+                            <constraint firstItem="VqB-wf-MjG" firstAttribute="trailing" secondItem="yP3-15-9uQ" secondAttribute="trailing" id="D8J-DK-K5i"/>
+                            <constraint firstItem="VqB-wf-MjG" firstAttribute="centerX" secondItem="yP3-15-9uQ" secondAttribute="centerX" id="oEF-PL-SaG"/>
+                            <constraint firstItem="VqB-wf-MjG" firstAttribute="top" secondItem="yP3-15-9uQ" secondAttribute="top" id="oZo-Jy-XQ1"/>
+                            <constraint firstItem="VqB-wf-MjG" firstAttribute="leading" secondItem="yP3-15-9uQ" secondAttribute="leading" id="sNd-Pf-rqd"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uSg-tN-Xbr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="861" y="82"/>
+            <point key="canvasLocation" x="860.86956521739137" y="81.696428571428569"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="yzh-NH-FGe">
+            <objects>
+                <viewController storyboardIdentifier="home" id="z5f-Nx-ccQ" customClass="HomeViewController" customModule="PartyWithMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ngO-ln-A44">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="CXC-C8-BkS"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q1q-Cq-b3m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="880" y="763"/>
+        </scene>
+        <!--Party View Controller-->
+        <scene sceneID="4mR-Gh-8ZX">
+            <objects>
+                <viewController storyboardIdentifier="party" id="W8s-VZ-dof" customClass="PartyViewController" customModule="PartyWithMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cOG-aF-ma4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="iCg-4Z-f3o"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9zT-pY-3hV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1696" y="763"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="bsB-Nr-gKA">
             <objects>
-                <viewController id="QmT-iy-MJQ" customClass="SignInViewController" customModule="PartyWithMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signin" id="QmT-iy-MJQ" customClass="SignInViewController" customModule="PartyWithMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NzD-2b-7Lu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="BUg-cc-lBu" userLabel="sigin background">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nf5-cr-Uqh">
+                                <rect key="frame" x="117" y="683" width="180" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="SAVE">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="30"/>
+                                </buttonConfiguration>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SIGN IN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rg0-z0-kCM">
+                                <rect key="frame" x="101" y="128" width="213" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="RtL-1a-X8e"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BUg-cc-lBu" firstAttribute="centerY" secondItem="NzD-2b-7Lu" secondAttribute="centerY" id="3Ic-gw-jCb"/>
+                            <constraint firstItem="BUg-cc-lBu" firstAttribute="centerX" secondItem="NzD-2b-7Lu" secondAttribute="centerX" id="SSc-Wx-Nlv"/>
+                            <constraint firstItem="BUg-cc-lBu" firstAttribute="top" secondItem="NzD-2b-7Lu" secondAttribute="top" id="efW-Jk-W82"/>
+                            <constraint firstAttribute="bottom" secondItem="BUg-cc-lBu" secondAttribute="bottom" id="pfE-2z-FNg"/>
+                            <constraint firstItem="BUg-cc-lBu" firstAttribute="leading" secondItem="NzD-2b-7Lu" secondAttribute="leading" id="rwl-u7-oVG"/>
+                            <constraint firstItem="BUg-cc-lBu" firstAttribute="trailing" secondItem="NzD-2b-7Lu" secondAttribute="trailing" id="trT-7M-tpV"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k1M-Pz-GcB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1696" y="82"/>
+            <point key="canvasLocation" x="1695.6521739130435" y="81.696428571428569"/>
         </scene>
     </scenes>
     <resources>
@@ -155,6 +250,9 @@
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

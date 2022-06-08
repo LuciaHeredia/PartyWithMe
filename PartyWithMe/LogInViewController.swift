@@ -14,5 +14,10 @@ class LogInViewController: UIViewController {
 
     }
     
-
+    @IBAction func continueToHome(_ sender: UIButton) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "home") as! HomeViewController
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
+    }
+    
 }
