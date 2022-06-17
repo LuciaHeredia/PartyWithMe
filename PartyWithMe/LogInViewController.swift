@@ -9,9 +9,14 @@ import UIKit
 
 class LogInViewController: UIViewController {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var forgotPasswordTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     @IBAction func continueToHome(_ sender: UIButton) {

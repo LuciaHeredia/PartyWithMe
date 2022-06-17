@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24B0A4C18652C84C4D4CB8C1 /* Pods_PartyWithMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA987818C3741D2163C64C98 /* Pods_PartyWithMe.framework */; };
 		C30EB26A2850DEB400E8E7FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EB2692850DEB400E8E7FE /* AppDelegate.swift */; };
 		C30EB26C2850DEB400E8E7FE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EB26B2850DEB400E8E7FE /* SceneDelegate.swift */; };
 		C30EB26E2850DEB400E8E7FE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EB26D2850DEB400E8E7FE /* FirstViewController.swift */; };
@@ -17,9 +18,14 @@
 		C30EB280285119B900E8E7FE /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EB27F285119B900E8E7FE /* SignInViewController.swift */; };
 		C30EB2822851312300E8E7FE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EB2812851312300E8E7FE /* HomeViewController.swift */; };
 		C30EB2842851319B00E8E7FE /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EB2832851319B00E8E7FE /* PartyViewController.swift */; };
+		C322B275285D1C6C00AA0FC4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322B274285D1C6C00AA0FC4 /* Utilities.swift */; };
+		C322B279285D25CF00AA0FC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C322B278285D25CF00AA0FC4 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5206677DE71A728217E0D5CB /* Pods-PartyWithMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyWithMe.debug.xcconfig"; path = "Target Support Files/Pods-PartyWithMe/Pods-PartyWithMe.debug.xcconfig"; sourceTree = "<group>"; };
+		8E3AE8E35FA538624C4AD119 /* Pods-PartyWithMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyWithMe.release.xcconfig"; path = "Target Support Files/Pods-PartyWithMe/Pods-PartyWithMe.release.xcconfig"; sourceTree = "<group>"; };
+		BA987818C3741D2163C64C98 /* Pods_PartyWithMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PartyWithMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30EB2662850DEB400E8E7FE /* PartyWithMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PartyWithMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30EB2692850DEB400E8E7FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C30EB26B2850DEB400E8E7FE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +38,8 @@
 		C30EB27F285119B900E8E7FE /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		C30EB2812851312300E8E7FE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C30EB2832851319B00E8E7FE /* PartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyViewController.swift; sourceTree = "<group>"; };
+		C322B274285D1C6C00AA0FC4 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		C322B278285D25CF00AA0FC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +47,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24B0A4C18652C84C4D4CB8C1 /* Pods_PartyWithMe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B8066FFDFE12975A417BDCF5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA987818C3741D2163C64C98 /* Pods_PartyWithMe.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C30EB25D2850DEB400E8E7FE = {
 			isa = PBXGroup;
 			children = (
 				C30EB2682850DEB400E8E7FE /* PartyWithMe */,
 				C30EB2672850DEB400E8E7FE /* Products */,
+				DD0C0E693FE93B9270675971 /* Pods */,
+				B8066FFDFE12975A417BDCF5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,19 +83,47 @@
 		C30EB2682850DEB400E8E7FE /* PartyWithMe */ = {
 			isa = PBXGroup;
 			children = (
+				C322B278285D25CF00AA0FC4 /* GoogleService-Info.plist */,
+				C322B273285D1C3800AA0FC4 /* Helpers */,
 				C30EB2692850DEB400E8E7FE /* AppDelegate.swift */,
 				C30EB26B2850DEB400E8E7FE /* SceneDelegate.swift */,
-				C30EB26D2850DEB400E8E7FE /* FirstViewController.swift */,
-				C30EB27D2851190700E8E7FE /* LogInViewController.swift */,
-				C30EB27F285119B900E8E7FE /* SignInViewController.swift */,
-				C30EB2812851312300E8E7FE /* HomeViewController.swift */,
-				C30EB2832851319B00E8E7FE /* PartyViewController.swift */,
+				C322B272285D1BB600AA0FC4 /* View Controllers */,
 				C30EB26F2850DEB400E8E7FE /* Main.storyboard */,
 				C30EB2722850DEB400E8E7FE /* Assets.xcassets */,
 				C30EB2742850DEB400E8E7FE /* LaunchScreen.storyboard */,
 				C30EB2772850DEB400E8E7FE /* Info.plist */,
 			);
 			path = PartyWithMe;
+			sourceTree = "<group>";
+		};
+		C322B272285D1BB600AA0FC4 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C30EB26D2850DEB400E8E7FE /* FirstViewController.swift */,
+				C30EB27D2851190700E8E7FE /* LogInViewController.swift */,
+				C30EB27F285119B900E8E7FE /* SignInViewController.swift */,
+				C30EB2812851312300E8E7FE /* HomeViewController.swift */,
+				C30EB2832851319B00E8E7FE /* PartyViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C322B273285D1C3800AA0FC4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C322B274285D1C6C00AA0FC4 /* Utilities.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DD0C0E693FE93B9270675971 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5206677DE71A728217E0D5CB /* Pods-PartyWithMe.debug.xcconfig */,
+				8E3AE8E35FA538624C4AD119 /* Pods-PartyWithMe.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,9 +133,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C30EB27A2850DEB400E8E7FE /* Build configuration list for PBXNativeTarget "PartyWithMe" */;
 			buildPhases = (
+				D749E8F6A1C5B9E9A70A4E92 /* [CP] Check Pods Manifest.lock */,
 				C30EB2622850DEB400E8E7FE /* Sources */,
 				C30EB2632850DEB400E8E7FE /* Frameworks */,
 				C30EB2642850DEB400E8E7FE /* Resources */,
+				D95E636C09DBCE749938E731 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -138,12 +187,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				C30EB2762850DEB400E8E7FE /* LaunchScreen.storyboard in Resources */,
+				C322B279285D25CF00AA0FC4 /* GoogleService-Info.plist in Resources */,
 				C30EB2732850DEB400E8E7FE /* Assets.xcassets in Resources */,
 				C30EB2712850DEB400E8E7FE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D749E8F6A1C5B9E9A70A4E92 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PartyWithMe-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D95E636C09DBCE749938E731 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PartyWithMe/Pods-PartyWithMe-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PartyWithMe/Pods-PartyWithMe-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PartyWithMe/Pods-PartyWithMe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C30EB2622850DEB400E8E7FE /* Sources */ = {
@@ -156,6 +248,7 @@
 				C30EB26A2850DEB400E8E7FE /* AppDelegate.swift in Sources */,
 				C30EB280285119B900E8E7FE /* SignInViewController.swift in Sources */,
 				C30EB26C2850DEB400E8E7FE /* SceneDelegate.swift in Sources */,
+				C322B275285D1C6C00AA0FC4 /* Utilities.swift in Sources */,
 				C30EB2822851312300E8E7FE /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +393,7 @@
 		};
 		C30EB27B2850DEB400E8E7FE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5206677DE71A728217E0D5CB /* Pods-PartyWithMe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -329,6 +423,7 @@
 		};
 		C30EB27C2850DEB400E8E7FE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E3AE8E35FA538624C4AD119 /* Pods-PartyWithMe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
