@@ -20,6 +20,7 @@
 		C30EB2842851319B00E8E7FE /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EB2832851319B00E8E7FE /* PartyViewController.swift */; };
 		C322B275285D1C6C00AA0FC4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322B274285D1C6C00AA0FC4 /* Utilities.swift */; };
 		C322B279285D25CF00AA0FC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C322B278285D25CF00AA0FC4 /* GoogleService-Info.plist */; };
+		C322B27B285D4AC900AA0FC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322B27A285D4AC900AA0FC4 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C30EB2832851319B00E8E7FE /* PartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyViewController.swift; sourceTree = "<group>"; };
 		C322B274285D1C6C00AA0FC4 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C322B278285D25CF00AA0FC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C322B27A285D4AC900AA0FC4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				C322B274285D1C6C00AA0FC4 /* Utilities.swift */,
+				C322B27A285D4AC900AA0FC4 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -122,7 +125,6 @@
 				5206677DE71A728217E0D5CB /* Pods-PartyWithMe.debug.xcconfig */,
 				8E3AE8E35FA538624C4AD119 /* Pods-PartyWithMe.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -250,6 +252,7 @@
 				C30EB26C2850DEB400E8E7FE /* SceneDelegate.swift in Sources */,
 				C322B275285D1C6C00AA0FC4 /* Utilities.swift in Sources */,
 				C30EB2822851312300E8E7FE /* HomeViewController.swift in Sources */,
+				C322B27B285D4AC900AA0FC4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

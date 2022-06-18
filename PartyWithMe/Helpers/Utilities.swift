@@ -20,8 +20,36 @@ class Utilities {
         textField.layer.addSublayer(bottomLine) // add line to text field
     }
     
+    static func isNameValid(_ name:String) -> Bool {
+        guard name.count > 2, name.count < 15 else { return false }
+        let nameRegEx = "^(([^ ]?)(^[a-zA-Z].*[a-zA-Z]$)([^ ]?))$"
+        let nameTest = NSPredicate(format:"SELF MATCHES %@", nameRegEx)
+        return nameTest.evaluate(with: name)
+    }
+    
+    static func isAgeValid(_ age:String) -> Bool {
+        guard Int(age) ?? 0 > 15 else { return false }
+        let ageRegEx = "[1-9][0-9]"
+        let ageTest = NSPredicate(format:"SELF MATCHES %@", ageRegEx)
+        return ageTest.evaluate(with: age)
+    }
+    
+    static func isPhoneValid(_ phone:String) -> Bool {
+        guard phone.count == 10 else { return false }
+        let phoneRegEx = "[0][5][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"
+        let phoneTest = NSPredicate(format:"SELF MATCHES %@", phoneRegEx)
+        return phoneTest.evaluate(with: phone)
+    }
+    
+    static func isEmailValid(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
     static func isPasswordValid(_ password: String) -> Bool {
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
+        let passwordRegEx = "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}"
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
         return passwordTest.evaluate(with: password)
     }
     
