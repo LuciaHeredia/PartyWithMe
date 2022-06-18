@@ -13,7 +13,6 @@ class LogInViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var forgotPasswordTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var animationView: AnimationView!
     
@@ -29,12 +28,20 @@ class LogInViewController: UIViewController {
     func setUpElements() {
         errorLabel.isHidden = true
         
-        // Create cleaned versions of the text field
+        // text fields hints
+        emailTextField.placeholder = Constants.Texts.email
+        passwordTextField.placeholder = Constants.Texts.password
+    }
+    
+    func getCleanedData() {
         email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
     @IBAction func continueToHome(_ sender: UIButton) {
+        
+        // Create cleaned versions of the text field
+        getCleanedData()
         
         // hide error label
         self.errorLabel.isHidden = true
@@ -59,25 +66,36 @@ class LogInViewController: UIViewController {
                 }
                 else {
                     
-                    // show alert: Notify logged in
-                    let alert = UIAlertController(title: "", message: Constants.ErrorMsg.userLoggedIn, preferredStyle: .alert)
-                    self.present(alert, animated: true, completion: nil)
-                    
-                    // hide animation loading
-                    self.animationView.isHidden = true
-                    
-                    // number of seconds of alert
-                    let when = DispatchTime.now() + 1
-                    DispatchQueue.main.asyncAfter(deadline: when){
-                        alert.dismiss(animated: true, completion: nil)
+                    // User verified email ***********
+                    if Auth.auth().currentUser == nil || !Auth.auth().currentUser!.isEmailVerified {
+                        // Couldn't sign in
+                        self.showError(Constants.ErrorMsg.userYetVerified)
+                    } else {
                         
-                        // TODO: send User to HOME view.
+                        // show alert: Notify logged in
+                        let alert = UIAlertController(title: "", message: Constants.ErrorMsg.userLoggedIn, preferredStyle: .alert)
+                        self.present(alert, animated: true, completion: nil)
                         
-                        self.transitionToHomeView() // go to home view
+                        // hide animation loading
+                        self.animationView.isHidden = true
                         
-                        //let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.ViewNames.home) as! HomeViewController
-                        //self.view.window?.rootViewController = homeViewController
-                        //self.view.window?.makeKeyAndVisible()
+                        // number of seconds of alert
+                        let when = DispatchTime.now() + 1
+                        DispatchQueue.main.asyncAfter(deadline: when){
+                            alert.dismiss(animated: true, completion: nil)
+                            
+                            // TODO: send User to HOME view.
+                            
+                            self.transitionToHomeView() // go to home view
+                            
+                            // TODO: make HOME the root view.
+                            
+                            
+                            //let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.ViewNames.home) as! HomeViewController
+                            //self.view.window?.rootViewController = homeViewController
+                            //self.view.window?.makeKeyAndVisible()
+                        }
+                        
                     }
                     
                 }
@@ -109,12 +127,6 @@ class LogInViewController: UIViewController {
             return Constants.ErrorMsg.emailInvalid
         }
         
-        // Check if the password is secure
-        if Utilities.isPasswordValid(password) == false {
-            // Password isn't secure enough
-            return Constants.ErrorMsg.passwordInvalid
-        }
-        
         return nil
     }
     
@@ -122,6 +134,29 @@ class LogInViewController: UIViewController {
         animationView.isHidden = true
         errorLabel.text = message
         errorLabel.isHidden = false
+    }
+    
+    @IBAction func forgotPasswordButton(_ sender: UIButton) {
+        let forgotPasswordAlert = UIAlertController(title: "Forgot password?", message: "Enter email address", preferredStyle: .alert)
+        forgotPasswordAlert.addTextField { (textField) in
+            textField.placeholder = "Enter email address"
+        }
+        forgotPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        forgotPasswordAlert.addAction(UIAlertAction(title: "Reset Password", style: .default, handler: { (action) in
+            let resetEmail = forgotPasswordAlert.textFields?.first?.text
+            Auth.auth().sendPasswordReset(withEmail: resetEmail!, completion: { (error) in
+                if error != nil{
+                    let resetFailedAlert = UIAlertController(title: "Reset Failed", message: error?.localizedDescription, preferredStyle: .alert)
+                    resetFailedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(resetFailedAlert, animated: true, completion: nil)
+                }else {
+                    let resetEmailSentAlert = UIAlertController(title: "Reset email sent successfully", message: "Check your email", preferredStyle: .alert)
+                    resetEmailSentAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(resetEmailSentAlert, animated: true, completion: nil)
+                }
+            })
+        }))
+        self.present(forgotPasswordAlert, animated: true, completion: nil) // show alert
     }
     
     func transitionToHomeView() {

@@ -178,29 +178,19 @@
                                     <action selector="continueToHome:" destination="KeT-YH-Csa" eventType="touchUpInside" id="ruJ-85-MlU"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter Email" borderStyle="roundedRect" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="kYH-Ec-qwO">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="kYH-Ec-qwO">
                                 <rect key="frame" x="65" y="355" width="284" height="45.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter Password" borderStyle="roundedRect" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="Ju8-vk-g3n">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="Ju8-vk-g3n">
                                 <rect key="frame" x="65" y="457" width="284" height="45.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Forgot Password?" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aVc-tZ-ZPp">
-                                <rect key="frame" x="112" y="521" width="191" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" link="YES"/>
-                                </accessibility>
-                                <color key="textColor" systemColor="systemRedColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8N-fp-meD">
                                 <rect key="frame" x="20" y="760" width="374" height="70"/>
@@ -220,12 +210,29 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="loading"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQV-4O-zfJ">
+                                <rect key="frame" x="116.5" y="519" width="181" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="181" id="Zjf-9r-7Pt"/>
+                                    <constraint firstAttribute="height" constant="38" id="uTH-3w-9EF"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Forgot Password?">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="forgotPasswordButton:" destination="KeT-YH-Csa" eventType="touchUpInside" id="lfE-et-ZOu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1cK-6K-ffb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="dQV-4O-zfJ" firstAttribute="centerX" secondItem="yP3-15-9uQ" secondAttribute="centerX" id="3sq-dz-iw7"/>
                             <constraint firstItem="VqB-wf-MjG" firstAttribute="centerY" secondItem="yP3-15-9uQ" secondAttribute="centerY" id="5kS-nX-OBd"/>
                             <constraint firstAttribute="bottom" secondItem="VqB-wf-MjG" secondAttribute="bottom" id="664-lm-cua"/>
+                            <constraint firstItem="dQV-4O-zfJ" firstAttribute="centerY" secondItem="yP3-15-9uQ" secondAttribute="centerY" constant="90" id="APg-rx-UYN"/>
                             <constraint firstItem="MYR-Xg-OOQ" firstAttribute="centerY" secondItem="yP3-15-9uQ" secondAttribute="centerY" constant="-282" id="Ccc-sY-NQT"/>
                             <constraint firstItem="VqB-wf-MjG" firstAttribute="trailing" secondItem="yP3-15-9uQ" secondAttribute="trailing" id="D8J-DK-K5i"/>
                             <constraint firstItem="MYR-Xg-OOQ" firstAttribute="centerX" secondItem="yP3-15-9uQ" secondAttribute="centerX" id="Q6V-zq-R4x"/>
@@ -242,7 +249,6 @@
                         <outlet property="animationView" destination="emE-aq-dzQ" id="KIf-Af-pZb"/>
                         <outlet property="emailTextField" destination="kYH-Ec-qwO" id="hby-x3-yIf"/>
                         <outlet property="errorLabel" destination="q8N-fp-meD" id="UKd-pQ-zWH"/>
-                        <outlet property="forgotPasswordTextField" destination="aVc-tZ-ZPp" id="Kef-gR-Y4p"/>
                         <outlet property="passwordTextField" destination="Ju8-vk-g3n" id="sw8-jr-xEE"/>
                     </connections>
                 </viewController>
@@ -419,25 +425,6 @@
                                 <rect key="frame" x="87" y="459" width="240" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello xxxxx" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEh-CR-fbm">
-                                <rect key="frame" x="77" y="44" width="157" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voe-ye-jCE">
-                                <rect key="frame" x="234" y="44" width="97" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="SIGN OUT">
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
-                                    <color key="baseBackgroundColor" systemColor="systemRedColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="signOutButton:" destination="W8s-VZ-dof" eventType="touchUpInside" id="Mdn-lP-IYQ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iCg-4Z-f3o"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
@@ -459,7 +446,6 @@
                         <outlet property="partyImage" destination="tT2-Jq-4t1" id="O5w-an-LvR"/>
                         <outlet property="partyNameLabel" destination="sXY-Wa-81k" id="O4t-0f-AsP"/>
                         <outlet property="totalAmountLabel" destination="ZgU-Iy-V9n" id="f5H-3L-3nA"/>
-                        <outlet property="userNameLabel" destination="MEh-CR-fbm" id="0Mi-9r-qpO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9zT-pY-3hV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
