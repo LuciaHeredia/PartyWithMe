@@ -22,6 +22,8 @@
 		C322B279285D25CF00AA0FC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C322B278285D25CF00AA0FC4 /* GoogleService-Info.plist */; };
 		C322B27B285D4AC900AA0FC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322B27A285D4AC900AA0FC4 /* Constants.swift */; };
 		C322B27E285D616700AA0FC4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322B27D285D616700AA0FC4 /* User.swift */; };
+		C38652BE285E0D640036EC72 /* dance-party.json in Resources */ = {isa = PBXBuildFile; fileRef = C38652BD285E0D640036EC72 /* dance-party.json */; };
+		C38652C0285E24880036EC72 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = C38652BF285E24880036EC72 /* loading.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		C322B278285D25CF00AA0FC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C322B27A285D4AC900AA0FC4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C322B27D285D616700AA0FC4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C38652BD285E0D640036EC72 /* dance-party.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "dance-party.json"; sourceTree = "<group>"; };
+		C38652BF285E24880036EC72 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +91,8 @@
 		C30EB2682850DEB400E8E7FE /* PartyWithMe */ = {
 			isa = PBXGroup;
 			children = (
+				C38652BC285E0D190036EC72 /* Animations */,
 				C322B27C285D615800AA0FC4 /* Models */,
-				C322B278285D25CF00AA0FC4 /* GoogleService-Info.plist */,
 				C322B273285D1C3800AA0FC4 /* Helpers */,
 				C30EB2692850DEB400E8E7FE /* AppDelegate.swift */,
 				C30EB26B2850DEB400E8E7FE /* SceneDelegate.swift */,
@@ -96,6 +100,7 @@
 				C30EB26F2850DEB400E8E7FE /* Main.storyboard */,
 				C30EB2722850DEB400E8E7FE /* Assets.xcassets */,
 				C30EB2742850DEB400E8E7FE /* LaunchScreen.storyboard */,
+				C322B278285D25CF00AA0FC4 /* GoogleService-Info.plist */,
 				C30EB2772850DEB400E8E7FE /* Info.plist */,
 			);
 			path = PartyWithMe;
@@ -128,6 +133,15 @@
 				C322B27D285D616700AA0FC4 /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C38652BC285E0D190036EC72 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				C38652BF285E24880036EC72 /* loading.json */,
+				C38652BD285E0D640036EC72 /* dance-party.json */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		DD0C0E693FE93B9270675971 /* Pods */ = {
@@ -201,8 +215,10 @@
 			files = (
 				C30EB2762850DEB400E8E7FE /* LaunchScreen.storyboard in Resources */,
 				C322B279285D25CF00AA0FC4 /* GoogleService-Info.plist in Resources */,
+				C38652C0285E24880036EC72 /* loading.json in Resources */,
 				C30EB2732850DEB400E8E7FE /* Assets.xcassets in Resources */,
 				C30EB2712850DEB400E8E7FE /* Main.storyboard in Resources */,
+				C38652BE285E0D640036EC72 /* dance-party.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
