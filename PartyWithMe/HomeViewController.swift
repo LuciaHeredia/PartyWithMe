@@ -11,9 +11,20 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var userNameLabel: UILabel!
     
+    var user: User? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setUpElements()
+    }
+    
+    func setUpElements() {
+        
+        // text fields
+        userNameLabel.text = "Hello " + (user?.getFirstName())!
+        
+        
     }
     
     @IBAction func signOutButton(_ sender: UIButton) {

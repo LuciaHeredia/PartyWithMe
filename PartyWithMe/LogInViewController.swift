@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import Lottie
+import FirebaseDatabase
 
 class LogInViewController: UIViewController {
 
@@ -18,6 +19,7 @@ class LogInViewController: UIViewController {
     
     var email: String = ""
     var password: String = ""
+    var user = User()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,17 +85,7 @@ class LogInViewController: UIViewController {
                         let when = DispatchTime.now() + 1
                         DispatchQueue.main.asyncAfter(deadline: when){
                             alert.dismiss(animated: true, completion: nil)
-                            
-                            // TODO: send User to HOME view.
-                            
-                            self.transitionToHomeView() // go to home view
-                            
-                            // TODO: make HOME the root view.
-                            
-                            
-                            //let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.ViewNames.home) as! HomeViewController
-                            //self.view.window?.rootViewController = homeViewController
-                            //self.view.window?.makeKeyAndVisible()
+                            self.loadUserData(userUid: result!.user.uid)
                         }
                         
                     }
@@ -116,8 +108,7 @@ class LogInViewController: UIViewController {
     func validateFields() -> String? {
         
         // Check that all fields are filled in
-        if email == "" ||
-            password == "" {
+        if email == "" || password == "" {
             return Constants.ErrorMsg.empty
         }
         
@@ -159,10 +150,39 @@ class LogInViewController: UIViewController {
         self.present(forgotPasswordAlert, animated: true, completion: nil) // show alert
     }
     
+    func loadUserData(userUid: String) {
+        let ref = Database.database(url: Constants.link).reference().child("users")
+        ref.child(userUid).observeSingleEvent(of: .value, with: { snapshot in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let userFirstname = value?["firstname"] as? String ?? ""
+            let userLastname = value?["lastname"] as? String ?? ""
+            let userAge = value?["age"] as? String ?? ""
+            let userPhone = value?["phone"] as? String ?? ""
+            let userEmail = self.email
+            self.user = User(firstname: userFirstname, lastname: userLastname, age: userAge, phone: userPhone, email: userEmail)
+            
+            self.transitionToHomeView() // go to home view
+        }) { error in
+            // Couldn't load user data
+            self.showError("Couldn't load user data, try again later.")
+        }
+
+    }
+    
     func transitionToHomeView() {
+                
+        // TODO: make HOME the root view.
+        
+        //let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.ViewNames.home) as! HomeViewController
+        //self.view.window?.rootViewController = homeViewController
+        //self.view.window?.makeKeyAndVisible()
+        
         let vc = storyboard?.instantiateViewController(withIdentifier: Constants.ViewNames.home) as! HomeViewController
         vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+        vc.user = self.user
+        present(vc, animated: true)
+        
     }
     
 }
