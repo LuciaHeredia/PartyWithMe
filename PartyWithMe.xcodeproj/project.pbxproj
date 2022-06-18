@@ -19,11 +19,11 @@
 		C30EB2822851312300E8E7FE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EB2812851312300E8E7FE /* HomeViewController.swift */; };
 		C30EB2842851319B00E8E7FE /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EB2832851319B00E8E7FE /* PartyViewController.swift */; };
 		C322B275285D1C6C00AA0FC4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322B274285D1C6C00AA0FC4 /* Utilities.swift */; };
-		C322B279285D25CF00AA0FC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C322B278285D25CF00AA0FC4 /* GoogleService-Info.plist */; };
 		C322B27B285D4AC900AA0FC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322B27A285D4AC900AA0FC4 /* Constants.swift */; };
 		C322B27E285D616700AA0FC4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322B27D285D616700AA0FC4 /* User.swift */; };
 		C38652BE285E0D640036EC72 /* dance-party.json in Resources */ = {isa = PBXBuildFile; fileRef = C38652BD285E0D640036EC72 /* dance-party.json */; };
 		C38652C0285E24880036EC72 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = C38652BF285E24880036EC72 /* loading.json */; };
+		C38652C2285E35490036EC72 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C38652C1285E35490036EC72 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,11 +43,11 @@
 		C30EB2812851312300E8E7FE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C30EB2832851319B00E8E7FE /* PartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyViewController.swift; sourceTree = "<group>"; };
 		C322B274285D1C6C00AA0FC4 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		C322B278285D25CF00AA0FC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C322B27A285D4AC900AA0FC4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C322B27D285D616700AA0FC4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C38652BD285E0D640036EC72 /* dance-party.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "dance-party.json"; sourceTree = "<group>"; };
 		C38652BF285E24880036EC72 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		C38652C1285E35490036EC72 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 				C30EB26F2850DEB400E8E7FE /* Main.storyboard */,
 				C30EB2722850DEB400E8E7FE /* Assets.xcassets */,
 				C30EB2742850DEB400E8E7FE /* LaunchScreen.storyboard */,
-				C322B278285D25CF00AA0FC4 /* GoogleService-Info.plist */,
+				C38652C1285E35490036EC72 /* GoogleService-Info.plist */,
 				C30EB2772850DEB400E8E7FE /* Info.plist */,
 			);
 			path = PartyWithMe;
@@ -214,11 +214,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C30EB2762850DEB400E8E7FE /* LaunchScreen.storyboard in Resources */,
-				C322B279285D25CF00AA0FC4 /* GoogleService-Info.plist in Resources */,
 				C38652C0285E24880036EC72 /* loading.json in Resources */,
 				C30EB2732850DEB400E8E7FE /* Assets.xcassets in Resources */,
 				C30EB2712850DEB400E8E7FE /* Main.storyboard in Resources */,
 				C38652BE285E0D640036EC72 /* dance-party.json in Resources */,
+				C38652C2285E35490036EC72 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

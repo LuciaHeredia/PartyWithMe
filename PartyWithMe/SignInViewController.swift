@@ -48,7 +48,9 @@ class SignInViewController: UIViewController {
         emailTextField.placeholder = Constants.Texts.email
         passwordTextField.placeholder = Constants.Texts.password
         
-        // Create cleaned versions of the data
+    }
+    
+    func getCleanedData() {
         firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         age = ageTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -58,6 +60,9 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func saveUserButton(_ sender: UIButton) {
+        
+        // Create cleaned versions of the data
+        getCleanedData()
         
         // hide error label
         self.errorlabel.isHidden = true
