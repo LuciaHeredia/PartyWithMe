@@ -128,7 +128,7 @@ class SignInViewController: UIViewController {
                                     } else {
                                         
                                         // show alert: Notify verify email sent
-                                        let alert = UIAlertController(title: "", message: Constants.ErrorMsg.userCreated, preferredStyle: .alert)
+                                        let alert = UIAlertController(title: "", message: Constants.InfoMsg.userCreated, preferredStyle: .alert)
                                         self.present(alert, animated: true, completion: nil)
                                         
                                         // hide animation loading

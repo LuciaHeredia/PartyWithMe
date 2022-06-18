@@ -20,6 +20,9 @@ struct Constants {
         static let phone = "Phone"
         static let email = "Email"
         static let password = "Password"
+        
+        static let ok = "OK"
+        static let cancel = "Cancel"
     }
     
     struct ViewNames {
@@ -41,7 +44,6 @@ struct Constants {
         static let emailInvalid = "Check Email address."
         static let passwordInvalid = "Password must contain at least 8 characters, a special character and a number."
         
-        static let userCreated = "User created successfully! Verify your email to LogIn."
         static let userNotCreated = "Error creating user."
         static let userDbNotCreated = "Error creating user Database."
         static let userAuthDeleted = "Error creating user DB, user Auth deleted successfully!"
@@ -49,10 +51,23 @@ struct Constants {
         static let userVerifyFailed = "Error: Either the user is not available, or the user is already verified."
         
         // LOG IN
-        static let userLoggedIn = "Successfully Logged In!"
         static let userYetVerified = "Email yet verified."
-        static let userDoesntExist = "User doesn't exist."
-        static let userWrongCredentials = "Email or Password incorrect."
+        
+    }
+    
+    struct InfoMsg {
+        
+        // SIGN IN
+        static let userCreated = "User created successfully! Verify your email to LogIn."
+        
+        // LOG IN
+        static let forgotPassword = "Forgot password?"
+        static let enterEmail = "Enter email address"
+        static let userLoggedIn = "Successfully Logged In!"
+        static let resetPassword = "Reset Password"
+        static let resetFailed = "Reset Failed"
+        static let resetSuccess = "Reset email sent successfully"
+        static let checkEmail = "Check your email"
         
     }
     
