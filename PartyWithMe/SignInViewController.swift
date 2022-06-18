@@ -8,6 +8,8 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import FirebaseCore
+import FirebaseDatabase
 
 class SignInViewController: UIViewController {
 
@@ -19,7 +21,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var errorlabel: UILabel!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,7 +59,7 @@ class SignInViewController: UIViewController {
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            // Create the user
+            // Create the user ***********
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
                 
                 // Check for errors
@@ -66,17 +68,18 @@ class SignInViewController: UIViewController {
                     self.errorlabel.isHidden = false
                     self.showError("Error creating user")
                 } else {
-                    // User was created successfully, now store the first name and last name
-                    let db = Firestore.firestore()
                     
-                    db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid": result!.user.uid ]) { (error) in
-                        
-                        if error != nil {
-                            // Show error message
-                            self.errorlabel.isHidden = false
-                            self.showError("Error saving user data")
-                        }
-                    }
+                    // Store user Database ***********
+                    let ref = Database.database(url: Constants.link).reference().child("users")
+                    
+                    let user = ["firstname": firstName,
+                                "lastname": lastName,
+                                "age": age,
+                                "phone": phone,
+                                "email": email
+                            ] as [String : Any]
+                    
+                    ref.child(result!.user.uid).setValue(user)
                     
                     // hide error label
                     self.errorlabel.isHidden = true
