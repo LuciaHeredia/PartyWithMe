@@ -15,7 +15,6 @@ class PartyViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var totalAmountLabel: UILabel!
     @IBOutlet weak var currentAmountLabel: UILabel!
-    @IBOutlet weak var checkTextField: UITextField!
     @IBOutlet weak var partyImage: UIImageView!
     
     override func viewDidLoad() {
