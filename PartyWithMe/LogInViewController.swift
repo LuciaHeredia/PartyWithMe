@@ -19,7 +19,6 @@ class LogInViewController: UIViewController {
     
     var email: String = ""
     var password: String = ""
-    var user = User()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -160,9 +159,11 @@ class LogInViewController: UIViewController {
             let userAge = value?["age"] as? String ?? ""
             let userPhone = value?["phone"] as? String ?? ""
             let userEmail = self.email
-            self.user = User(firstname: userFirstname, lastname: userLastname, age: userAge, phone: userPhone, email: userEmail)
+            let user = User(firstname: userFirstname, lastname: userLastname, age: userAge, phone: userPhone, email: userEmail)
             
+            self.saveUserLoggedIn(user: user) // save logged-in user
             self.transitionToHomeView() // go to home view
+            
         }) { error in
             // Couldn't load user data
             self.showError("Couldn't load user data, try again later.")
@@ -170,19 +171,22 @@ class LogInViewController: UIViewController {
 
     }
     
+    func saveUserLoggedIn(user: User) {
+        
+        // Convert Object to JSON
+        let encodedData = try! JSONEncoder().encode(user)
+        let userJson = String(data: encodedData, encoding: .utf8)
+        
+        // save in UserDefaults
+        UserDefaults.standard.set(true, forKey: "isLoggedIn")
+        UserDefaults.standard.set(userJson, forKey: "userJson")
+        UserDefaults.standard.synchronize()
+    }
+    
     func transitionToHomeView() {
-                
-        // TODO: make HOME the root view.
-        
-        //let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.ViewNames.home) as! HomeViewController
-        //self.view.window?.rootViewController = homeViewController
-        //self.view.window?.makeKeyAndVisible()
-        
         let vc = storyboard?.instantiateViewController(withIdentifier: Constants.ViewNames.home) as! HomeViewController
         vc.modalPresentationStyle = .fullScreen
-        vc.user = self.user
         present(vc, animated: true)
-        
     }
     
 }

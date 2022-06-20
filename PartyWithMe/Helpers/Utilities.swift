@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 class Utilities {
     

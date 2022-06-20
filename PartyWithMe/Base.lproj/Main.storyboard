@@ -638,6 +638,11 @@
             <point key="canvasLocation" x="1695.6521739130435" y="81.696428571428569"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="7DR-JI-HoV"/>
+        <designable name="YGu-yD-z6Y"/>
+        <designable name="emE-aq-dzQ"/>
+    </designables>
     <resources>
         <image name="background" width="1280" height="720"/>
         <image name="background-2" width="1952" height="1316"/>
