@@ -24,6 +24,7 @@
 		C38652BE285E0D640036EC72 /* dance-party.json in Resources */ = {isa = PBXBuildFile; fileRef = C38652BD285E0D640036EC72 /* dance-party.json */; };
 		C38652C0285E24880036EC72 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = C38652BF285E24880036EC72 /* loading.json */; };
 		C38652C2285E35490036EC72 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C38652C1285E35490036EC72 /* GoogleService-Info.plist */; };
+		C3F53A50286EFC800019F85F /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F53A4F286EFC800019F85F /* Party.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		C38652BD285E0D640036EC72 /* dance-party.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "dance-party.json"; sourceTree = "<group>"; };
 		C38652BF285E24880036EC72 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		C38652C1285E35490036EC72 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C3F53A4F286EFC800019F85F /* Party.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				C322B27D285D616700AA0FC4 /* User.swift */,
+				C3F53A4F286EFC800019F85F /* Party.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			files = (
 				C30EB2842851319B00E8E7FE /* PartyViewController.swift in Sources */,
 				C30EB27E2851190700E8E7FE /* LogInViewController.swift in Sources */,
+				C3F53A50286EFC800019F85F /* Party.swift in Sources */,
 				C30EB26E2850DEB400E8E7FE /* FirstViewController.swift in Sources */,
 				C30EB26A2850DEB400E8E7FE /* AppDelegate.swift in Sources */,
 				C30EB280285119B900E8E7FE /* SignInViewController.swift in Sources */,
