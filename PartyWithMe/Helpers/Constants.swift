@@ -10,7 +10,7 @@ import UIKit
 
 struct Constants {
     
-    static let link = "https://partywithme-2022b-default-rtdb.europe-west1.firebasedatabase.app/"
+    static let databaseLink = "https://partywithme-2022b-default-rtdb.europe-west1.firebasedatabase.app/"
 
     
     struct Texts {

@@ -10,6 +10,7 @@ import Foundation
 struct Party: Codable {
     var name: String
     var date: String
+    var day: String
     var city: String
     
     var totalAmount: Int
@@ -17,6 +18,6 @@ struct Party: Codable {
     
     var description: String
     
-    var idListOfPeople: String
-    var idPicture: String
+    //var idListOfPeople: String
+    var idImage: String
 }

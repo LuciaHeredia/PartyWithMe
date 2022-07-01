@@ -150,7 +150,7 @@ class LogInViewController: UIViewController {
     }
     
     func loadUserData(userUid: String) {
-        let ref = Database.database(url: Constants.link).reference().child("users")
+        let ref = Database.database(url: Constants.databaseLink).reference().child("users")
         ref.child(userUid).observeSingleEvent(of: .value, with: { snapshot in
             // Get user value
             let value = snapshot.value as? NSDictionary

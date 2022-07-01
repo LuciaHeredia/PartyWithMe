@@ -89,7 +89,7 @@ class SignInViewController: UIViewController {
                 } else {
                     
                     // Store user Database ***********
-                    let ref = Database.database(url: Constants.link).reference().child("users")
+                    let ref = Database.database(url: Constants.databaseLink).reference().child("users")
                     let user = ["firstname": self.firstName,
                                 "lastname": self.lastName,
                                 "age": self.age,
