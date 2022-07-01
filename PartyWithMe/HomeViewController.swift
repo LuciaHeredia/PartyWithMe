@@ -9,10 +9,11 @@ import UIKit
 import FirebaseDatabase
 import FirebaseStorage
 
-class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class HomeViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var partysList: UITableView!
     
     var user: User? = nil
     
@@ -41,6 +42,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 // hide spinner
                 self.spinner.stopAnimating()
                 self.spinner.isHidden = true
+                // table list
+                self.partysList.dataSource = self
+                self.partysList.reloadData()
                 // then setup collection
                 self.setUpListElements()
             }
@@ -96,6 +100,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 
                 // add to list
                 partys.append(party)
+ 
             }
             group.leave()
         }) { error in
@@ -118,14 +123,17 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allPartys.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let party = allPartys[indexPath.row]
+        let cell = partysList.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
+        cell.partyNameLabel.text = party.name
+        
+        return cell
     }
-    
     
     @IBAction func signOutButton(_ sender: UIButton) {
         saveUserLoggedOut() // save logged-out param
