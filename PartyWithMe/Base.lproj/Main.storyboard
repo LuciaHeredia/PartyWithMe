@@ -638,6 +638,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addMe" destination="dGe-mx-Zt5" id="Ld7-ui-dzm"/>
                         <outlet property="amountLabel" destination="ZgU-Iy-V9n" id="61M-lS-L5z"/>
                         <outlet property="cityLabel" destination="Nir-kr-huu" id="7Gj-at-XaV"/>
                         <outlet property="dateLabel" destination="Rzi-eT-rN5" id="Hhl-j9-7bi"/>

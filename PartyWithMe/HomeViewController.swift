@@ -142,15 +142,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // send party selected to Party view
         let p:Party = allPartys[indexPath.row]
-        do{
-            let encodedData = try JSONEncoder().encode(p)
-            let jsonString: String = String(data: encodedData, encoding: .utf8) ?? ""
-            transitionToPartyView(partyJson: jsonString)
-        }catch{
-            print("Failed converting object to json string!")
-            print(error)
-        }
-        
+        let encodedData = try! JSONEncoder().encode(p)
+        let jsonString = String(data: encodedData, encoding: .utf8)
+        transitionToPartyView(partyJson: jsonString!)
     }
     
     @IBAction func signOutButton(_ sender: UIButton) {
@@ -174,6 +168,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let vc = storyboard?.instantiateViewController(withIdentifier: Constants.ViewNames.party) as! PartyViewController
         vc.modalPresentationStyle = .fullScreen
         vc.partyJson = partyJson
+        vc.userConnected = user
         present(vc, animated: true, completion: nil)
     }
 

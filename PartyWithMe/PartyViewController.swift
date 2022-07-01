@@ -19,10 +19,13 @@ class PartyViewController: UIViewController {
     @IBOutlet weak var partyImage: UIImageView!
     @IBOutlet weak var imageSpinner: UIActivityIndicatorView!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var addMe: UIButton!
     
     var partyJson: String = ""
     var party: Party = Party()
     var listOfPeople = [String]()
+    var userConnected: User? = nil
+    var userName: String = ""
     
     let imageEnding = ".jpg"
     let twelveMB : Int64 = 1024 * 1024 * 12
@@ -39,14 +42,9 @@ class PartyViewController: UIViewController {
         imageSpinner.startAnimating()
         
         // json to object
-        do{
-            if let dataFromJsonString = partyJson.data(using: .utf8) {
-                party = try JSONDecoder().decode(Party.self,from: dataFromJsonString)
-                setUpElements()
-            }
-        }catch{
-            print("Failed converting json string to object!")
-            print(error)
+        if let dataFromJsonString = partyJson.data(using: .utf8) {
+            party = try! JSONDecoder().decode(Party.self,from: dataFromJsonString)
+            setUpElements()
         }
         
     }
@@ -83,9 +81,23 @@ class PartyViewController: UIViewController {
             self.listOfPeople = self.loadListOfPeopleData()
             DispatchQueue.main.async {
                 print(self.listOfPeople)
+                self.disableAddMeButton()
             }
         }
         
+    }
+    
+    func disableAddMeButton() {
+        // disable ADDME button
+        if (party.currentAmount == party.totalAmount) {
+            for person in listOfPeople {
+                userName = userConnected!.firstname  + " " + userConnected!.lastname
+                if person == userName {
+                    // disable button
+                    addMe.isEnabled = false
+                }
+            }
+        }
     }
     
     func loadListOfPeopleData() -> [String] {
@@ -129,7 +141,11 @@ class PartyViewController: UIViewController {
     }
     
     @IBAction func addMeButton(_ sender: UIButton) {
-        
+
+        // add one to currentAmount
+        // save in listOfPeople
+        // show: user added
+ 
     }
     
     @IBAction func goBackButton(_ sender: UIButton) {
