@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 import FirebaseStorage
 
 class PartyViewController: UIViewController {
@@ -21,9 +22,14 @@ class PartyViewController: UIViewController {
     
     var partyJson: String = ""
     var party: Party = Party()
+    var listOfPeople = [String]()
     
     let imageEnding = ".jpg"
     let twelveMB : Int64 = 1024 * 1024 * 12
+    
+    lazy var background: DispatchQueue = {
+        return DispatchQueue.init(label: "background.queue", attributes: .concurrent)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +76,56 @@ class PartyViewController: UIViewController {
             }
         }
         downloadTask.resume()
+        
+        // set list of people
+        self.background.async {
+            // first load data
+            self.listOfPeople = self.loadListOfPeopleData()
+            DispatchQueue.main.async {
+                print(self.listOfPeople)
+            }
+        }
+        
+    }
+    
+    func loadListOfPeopleData() -> [String] {
+        
+        var peoples = [String]()
+        let group = DispatchGroup.init()
+        
+        group.enter()
+        let ref = Database.database(url: Constants.databaseLink).reference().child("listOfPeople")
+        ref.child(party.idList).observeSingleEvent(of: .value, with: { (snapshot) in
+                        
+            for child in snapshot.children.allObjects as! [DataSnapshot] {
+                let dict = child.value as? [String : AnyObject] ?? [:]
+                
+                // Get  value
+                let name = dict["name"] as? String ?? ""
+                
+                // add to list
+                peoples.append(name)
+                
+            }
+            group.leave()
+        }) { error in
+            // Couldn't load data
+            self.showErrorAlert("Couldn't load data, try again later.")
+        }
+        group.wait()
+        
+        return peoples
+    }
+    
+    func showErrorAlert(_ message:String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        
+        // number of seconds of alert
+        let when = DispatchTime.now() + 2
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            alert.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func addMeButton(_ sender: UIButton) {

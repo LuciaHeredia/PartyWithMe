@@ -19,6 +19,6 @@ struct Party: Codable {
     
     var description: String = ""
     
-    //var idListOfPeople: String
+    var idList: String = ""
     var idImage: String = ""
 }

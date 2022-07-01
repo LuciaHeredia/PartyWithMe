@@ -89,18 +89,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let currentAmount = dict["currentAmount"] as? Int ?? 0
                 let description = dict["description"] as? String ?? ""
                 let idImage = dict["idImage"] as? String ?? ""
-                
-                /*
-                // party list
-                ref.child("listOfPeople").observeSingleEvent(of: .value, with: { snapshot in
-                    // Get value
-                    let value = snapshot.value as? NSDictionary
-                    
-                })*/
+                let idList = dict["idList"] as? String ?? ""
                 
                 // make Party model
-                let party = Party(id: id, name: name, date: date, day: day, city: city, totalAmount: totalAmount, currentAmount: currentAmount, description: description, idImage: idImage)
-                
+                let party = Party(id: id, name: name, date: date, day: day, city: city, totalAmount: totalAmount, currentAmount: currentAmount, description: description, idList: idList, idImage: idImage)
+
                 // add to list
                 partys.append(party)
  
