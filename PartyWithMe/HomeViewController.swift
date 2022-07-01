@@ -16,10 +16,11 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpElements()
+        setUpUserElements()
+        setUpPartysListElements()
     }
     
-    func setUpElements() {
+    func setUpUserElements() {
         
         /* load user */
         let userString: String = UserDefaults.standard.string(forKey: "userJson")!
@@ -31,6 +32,10 @@ class HomeViewController: UIViewController {
         // text fields
         userNameLabel.text = "Hello " + self.user!.firstname
         
+    }
+    
+    func setUpPartysListElements() {
+        let partyname = [""]
     }
     
     @IBAction func signOutButton(_ sender: UIButton) {
