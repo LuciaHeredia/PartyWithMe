@@ -9,9 +9,10 @@ import UIKit
 import FirebaseDatabase
 import FirebaseStorage
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var user: User? = nil
     
@@ -25,16 +26,25 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // show spinner
+        self.spinner.isHidden = false
+        spinner.startAnimating()
+        
+        // load and set up user details
         setUpUserElements()
         
         // load partys from firebase
         self.background.async {
-            self.allPartys = QuestionBank().list
+            // first load data
+            self.allPartys = self.loadPartysData()
             DispatchQueue.main.async {
+                // hide spinner
+                self.spinner.stopAnimating()
+                self.spinner.isHidden = true
+                // then setup collection
                 self.setUpListElements()
             }
         }
-
     }
     
     func setUpUserElements() {
@@ -51,21 +61,12 @@ class HomeViewController: UIViewController {
         
     }
     
-    func setUpListElements() {
+    func loadPartysData() -> [Party] {
         
-        /* load partys in list */
-        //loadPartysData()
+        var partys = [Party]()
+        let group = DispatchGroup.init()
         
-        for p in allPartys {
-            print(p)
-        }
-        
-        /* load partys in cards */
-        
-    }
-    
-    func loadPartysData() {
-        
+        group.enter()
         let ref = Database.database(url: Constants.databaseLink).reference().child("partys")
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
                         
@@ -94,15 +95,37 @@ class HomeViewController: UIViewController {
                 let party = Party(name: name, date: date, day: day, city: city, totalAmount: totalAmount, currentAmount: currentAmount, description: description, idImage: idImage)
                 
                 // add to list
-                self.partys.append(party)
+                partys.append(party)
             }
-            
+            group.leave()
         }) { error in
             // Couldn't load data
             self.showErrorAlert("Couldn't load data, try again later.")
         }
-                
+        group.wait()
+        
+        return partys
     }
+    
+    func setUpListElements() {
+        
+        /* load partys in cards */
+        
+        
+        for p in allPartys {
+            print(p)
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return allPartys.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
+    }
+    
     
     @IBAction func signOutButton(_ sender: UIButton) {
         saveUserLoggedOut() // save logged-out param
