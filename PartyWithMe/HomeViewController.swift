@@ -131,6 +131,12 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         let party = allPartys[indexPath.row]
         let cell = partysList.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         cell.partyNameLabel.text = party.name
+        cell.dayLabel.text = party.day
+        cell.dateLabel.text = party.date
+        cell.cityLabel.text = party.city
+        
+        //cell.amountLabel.text =
+        
         
         return cell
     }
