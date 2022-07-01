@@ -8,16 +8,17 @@
 import Foundation
 
 struct Party: Codable {
-    var name: String
-    var date: String
-    var day: String
-    var city: String
+    var id: String = ""
+    var name: String = ""
+    var date: String = ""
+    var day: String = ""
+    var city: String = ""
     
-    var totalAmount: Int
-    var currentAmount: Int
+    var totalAmount: Int = 0
+    var currentAmount: Int = 0
     
-    var description: String
+    var description: String = ""
     
     //var idListOfPeople: String
-    var idImage: String
+    var idImage: String = ""
 }

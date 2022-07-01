@@ -9,7 +9,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseStorage
 
-class HomeViewController: UIViewController, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
@@ -31,7 +31,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         
         // show spinner
-        self.spinner.isHidden = false
+        spinner.isHidden = false
         spinner.startAnimating()
         
         // load and set up user details
@@ -47,9 +47,8 @@ class HomeViewController: UIViewController, UITableViewDataSource {
                 self.spinner.isHidden = true
                 // table list
                 self.partysList.dataSource = self
+                self.partysList.delegate = self
                 self.partysList.reloadData()
-                // then setup collection
-                self.setUpListElements()
             }
         }
     }
@@ -81,6 +80,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
                 let dict = child.value as? [String : AnyObject] ?? [:]
                 
                 // Get party value
+                let id = child.key
                 let name = dict["name"] as? String ?? ""
                 let date = dict["date"] as? String ?? ""
                 let day = dict["day"] as? String ?? ""
@@ -99,7 +99,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
                 })*/
                 
                 // make Party model
-                let party = Party(name: name, date: date, day: day, city: city, totalAmount: totalAmount, currentAmount: currentAmount, description: description, idImage: idImage)
+                let party = Party(id: id, name: name, date: date, day: day, city: city, totalAmount: totalAmount, currentAmount: currentAmount, description: description, idImage: idImage)
                 
                 // add to list
                 partys.append(party)
@@ -113,17 +113,6 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         group.wait()
         
         return partys
-    }
-    
-    func setUpListElements() {
-        
-        /* load partys in cards */
-        
-        
-        for p in allPartys {
-            print(p)
-        }
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -146,15 +135,30 @@ class HomeViewController: UIViewController, UITableViewDataSource {
             if let data = data {
                 let image = UIImage(data: data)
                 cell.partyImage.image = image
+            } else {
+                print("Failed loading image!")
             }
-            print("Failed loading image!")
         }
         downloadTask.resume()
         
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        partysList.deselectRow(at: indexPath, animated: true)
+        
+        // send party selected to Party view
+        let p:Party = allPartys[indexPath.row]
+        do{
+            let encodedData = try JSONEncoder().encode(p)
+            let jsonString: String = String(data: encodedData, encoding: .utf8) ?? ""
+            transitionToPartyView(partyJson: jsonString)
+        }catch{
+            print("Failed converting object to json string!")
+            print(error)
+        }
+        
+    }
     
     @IBAction func signOutButton(_ sender: UIButton) {
         saveUserLoggedOut() // save logged-out param
@@ -168,14 +172,15 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     }
     
     func transitionToFirstView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "first") as! FirstViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: Constants.ViewNames.first) as! FirstViewController
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }
     
-    func transitionToPartyView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "party") as! PartyViewController
+    func transitionToPartyView(partyJson: String) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: Constants.ViewNames.party) as! PartyViewController
         vc.modalPresentationStyle = .fullScreen
+        vc.partyJson = partyJson
         present(vc, animated: true, completion: nil)
     }
 
