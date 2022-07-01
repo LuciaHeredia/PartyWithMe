@@ -20,6 +20,9 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     // empty array of partys
     var allPartys = [Party]()
     
+    let imageEnding = ".jpg"
+    let twelveMB : Int64 = 1024 * 1024 * 12
+    
     lazy var background: DispatchQueue = {
         return DispatchQueue.init(label: "background.queue", attributes: .concurrent)
     }()
@@ -134,12 +137,24 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         cell.dayLabel.text = party.day
         cell.dateLabel.text = party.date
         cell.cityLabel.text = party.city
+        cell.amountLabel.text = String(party.currentAmount) + "/" + String(party.totalAmount)
         
-        //cell.amountLabel.text =
-        
+        // set image from storage
+        let imageName = party.idImage + imageEnding
+        let downloadImageRef = Storage.storage().reference().child(imageName)
+        let downloadTask = downloadImageRef.getData(maxSize: twelveMB) { data, error in
+            if let data = data {
+                let image = UIImage(data: data)
+                cell.partyImage.image = image
+            }
+            print("Failed loading image!")
+        }
+        downloadTask.resume()
         
         return cell
     }
+    
+    
     
     @IBAction func signOutButton(_ sender: UIButton) {
         saveUserLoggedOut() // save logged-out param

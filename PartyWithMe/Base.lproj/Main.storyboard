@@ -377,8 +377,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="f2K-t8-KJr">
-                                                    <rect key="frame" x="144" y="38" width="210" height="135"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="loading" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f2K-t8-KJr">
+                                                    <rect key="frame" x="164" y="43" width="190" height="130"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -745,6 +745,7 @@
     <resources>
         <image name="background" width="1280" height="720"/>
         <image name="background-2" width="1952" height="1316"/>
+        <image name="loading" width="392" height="266"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
