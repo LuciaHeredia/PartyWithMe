@@ -311,6 +311,7 @@ class PartyViewController: UIViewController {
         let vc = storyboard?.instantiateViewController(withIdentifier: Constants.ViewNames.list) as! ListViewController
         vc.modalPresentationStyle = .fullScreen
         vc.listOfPeople = listOfPeople
+        vc.partyNameStr = party.name
         present(vc, animated: true, completion: nil)
     }
 
