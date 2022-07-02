@@ -359,7 +359,7 @@
                                                         <constraint firstAttribute="height" constant="15" id="Eqg-hq-Uuc"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="hLr-y5-VPM"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -369,7 +369,7 @@
                                                         <constraint firstAttribute="height" constant="15" id="Qbq-4i-oxV"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="sbt-gb-wla"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -379,7 +379,7 @@
                                                         <constraint firstAttribute="height" constant="14" id="Cvb-Kf-T9m"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="IZN-id-l5l"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -389,7 +389,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="M1P-41-JmQ"/>
                                                         <constraint firstAttribute="height" constant="20" id="YoB-Zv-wME"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -399,7 +399,7 @@
                                                         <constraint firstAttribute="height" constant="16" id="50d-ev-cpP"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="bA7-29-2Zq"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -409,7 +409,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="OnN-db-Ing"/>
                                                         <constraint firstAttribute="height" constant="15" id="ee5-Ih-mau"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -607,7 +607,7 @@
                                     <constraint firstAttribute="height" constant="23" id="dSj-Ky-YUT"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="194" id="eSo-Ue-RDi"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -617,7 +617,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="194" id="M6W-kE-Pqm"/>
                                     <constraint firstAttribute="height" constant="23" id="Zul-xK-a5v"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -627,7 +627,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="194" id="AXX-cb-uYm"/>
                                     <constraint firstAttribute="height" constant="23" id="RWF-A0-ztF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -731,6 +731,9 @@
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="30"/>
                                     <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="removeFromParty:" destination="W8s-VZ-dof" eventType="touchUpInside" id="j6Q-vD-Nsb"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AF2-np-AlP">
                                 <rect key="frame" x="20" y="295" width="194" height="23"/>
@@ -738,7 +741,7 @@
                                     <constraint firstAttribute="height" constant="23" id="fau-ai-Phf"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="194" id="uKY-qi-00C"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -748,7 +751,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="194" id="AK3-WQ-39j"/>
                                     <constraint firstAttribute="height" constant="23" id="wkh-zy-apF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -758,7 +761,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="194" id="Wcy-UM-9c0"/>
                                     <constraint firstAttribute="height" constant="23" id="yop-C8-tgl"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -813,6 +816,7 @@
                         <outlet property="imageSpinner" destination="Mbp-p9-WLc" id="5V1-mQ-cdj"/>
                         <outlet property="partyImage" destination="tT2-Jq-4t1" id="O5w-an-LvR"/>
                         <outlet property="partyNameLabel" destination="sXY-Wa-81k" id="O4t-0f-AsP"/>
+                        <outlet property="removeMe" destination="YWC-Qb-nY8" id="hpu-dH-FP7"/>
                         <outlet property="timeLabel" destination="Dsb-2g-0CE" id="eeg-OA-wKi"/>
                     </connections>
                 </viewController>

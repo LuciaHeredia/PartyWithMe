@@ -22,6 +22,7 @@ class PartyViewController: UIViewController {
     @IBOutlet weak var imageSpinner: UIActivityIndicatorView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var addMe: UIButton!
+    @IBOutlet weak var removeMe: UIButton!
     
     var partyJson: String = ""
     var party: Party = Party()
@@ -105,21 +106,25 @@ class PartyViewController: UIViewController {
             // first load data
             self.listOfPeople = self.loadListOfPeopleData()
             DispatchQueue.main.async {
-                self.disableAddMeButton()
+                self.checkButtons()
             }
         }
         
     }
     
-    func disableAddMeButton() {
+    func checkButtons() {
         if (party.currentAmount == party.totalAmount) {
-            // disable button
+            // disable buttons
             addMe.isEnabled = false
+            removeMe.isEnabled = false
         } else {
+            addMe.isEnabled = true
+            removeMe.isEnabled = false
+            
             for person in listOfPeople {
                 if person == userName {
-                    // disable button
                     addMe.isEnabled = false
+                    removeMe.isEnabled = true
                 }
             }
         }
@@ -209,9 +214,9 @@ class PartyViewController: UIViewController {
             self.party = self.loadPartyData(idParty: self.party.id)
             DispatchQueue.main.async {
                 // check available space
-                self.disableAddMeButton()
+                self.checkButtons()
                 if (self.party.currentAmount != self.party.totalAmount) {
-                    self.addUserName()
+                    self.addRemoveUserName(toAdd: true)
                 } else {
                     self.showErrorAlert("Capacity full!")
                 }
@@ -220,26 +225,35 @@ class PartyViewController: UIViewController {
 
     }
     
-    func addUserName() {
+    func addRemoveUserName(toAdd: Bool) {
         var partySaved: Bool = false
         var listSaved: Bool = false
 
         // save party data
         self.savePartyDataDispatch.async {
-            partySaved = self.savePartyData()
+            partySaved = self.savePartyData(toAdd: toAdd)
             DispatchQueue.main.async {
                 
                 // save list data
                 self.saveListDataDispatch.async {
-                    listSaved = self.saveListOfPeople()
+                    listSaved = self.saveListOfPeople(toAdd: toAdd)
                     DispatchQueue.main.async { [self] in
                         
                         if listSaved && partySaved {
-                            self.showErrorAlert("You were added to the list!")
-                            self.disableAddMeButton()
-                            self.amountLabel.text = String(self.party.currentAmount) + "/" + String(self.party.totalAmount)
+                            if toAdd {
+                                self.showErrorAlert("You were added to the list!")
+                                self.checkButtons()
+                                self.amountLabel.text = String(self.party.currentAmount) + "/" + String(self.party.totalAmount)
+                            } else {
+                                self.showErrorAlert("You were removed from the list!")
+                                self.amountLabel.text = String(self.party.currentAmount) + "/" + String(self.party.totalAmount)
+                            }
                         } else {
-                            self.showErrorAlert("Couldn't save data, try again later.")
+                            if toAdd {
+                                self.showErrorAlert("Couldn't save data, try again later.")
+                            } else {
+                                self.showErrorAlert("Couldn't remove data, try again later.")
+                            }
                         }
                         
                     }
@@ -251,12 +265,15 @@ class PartyViewController: UIViewController {
         
     }
     
-    func savePartyData() -> Bool {
+    func savePartyData(toAdd: Bool) -> Bool {
         var partySaved: Bool = false
         let group = DispatchGroup.init()
         
-        // add one to currentAmount
-        party.currentAmount = party.currentAmount + 1
+        if toAdd {
+            party.currentAmount = party.currentAmount + 1
+        } else {
+            party.currentAmount = party.currentAmount - 1
+        }
         
         // add party data to DB
         group.enter()
@@ -275,27 +292,46 @@ class PartyViewController: UIViewController {
         return partySaved
     }
     
-    func saveListOfPeople() -> Bool {
+    func saveListOfPeople(toAdd: Bool) -> Bool {
         var listSaved: Bool = false
         let group = DispatchGroup.init()
         
-        // add user name to list
-        listOfPeople.append(userName)
-        
-        // add list data to DB
-        group.enter()
-        ref.child("listOfPeople").child(party.idList).child(String(party.currentAmount)).setValue(["name": userName]) {
-          (error:Error?, ref:DatabaseReference) in
-            if let error = error {
-                print("List data could not be saved: \(error).")
-          } else {
-                print("List data saved successfully!")
-                listSaved = true
-          }
-            group.leave()
+        if toAdd {
+            listOfPeople.append(userName) // add user name to list
+            
+            // add list data to DB
+            group.enter()
+            ref.child("listOfPeople").child(party.idList).child(String(party.currentAmount)).setValue(["name": userName]) {
+              (error:Error?, ref:DatabaseReference) in
+                if let error = error {
+                    print("List data could not be saved: \(error).")
+              } else {
+                    print("List data saved successfully!")
+                    listSaved = true
+              }
+                group.leave()
+            }
+            group.wait()
+            
+        } else { // remove from list
+            let indexOfUser = listOfPeople.firstIndex(of: userName)
+            listOfPeople.remove(at: indexOfUser!)
+            let idUserIndex = String(indexOfUser! + 1)
+            
+            // update list data in DB
+            group.enter()
+            ref.child("listOfPeople").child(party.idList).child(idUserIndex).removeValue { (error:Error?, ref:DatabaseReference) in
+                if let error = error {
+                    print("List data could not be saved: \(error).")
+              } else {
+                    print("List data saved successfully!")
+                    listSaved = true
+              }
+                group.leave()
+            }
+            group.wait()
         }
-        group.wait()
-        
+                
         return listSaved
     }
     
@@ -305,6 +341,29 @@ class PartyViewController: UIViewController {
     
     @IBAction func goToListButton(_ sender: UIButton) {
         transitionToListView()
+    }
+    
+    @IBAction func removeFromParty(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Are you sure?", message: "", preferredStyle: UIAlertController.Style.alert)
+
+        // add the actions (buttons)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { action in
+            self.removeUserFromPartyData()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func removeUserFromPartyData() {
+        
+        // buttons
+        addMe.isEnabled = true
+        removeMe.isEnabled = false
+        
+        // save data
+        addRemoveUserName(toAdd: false)
     }
     
     func transitionToHomeView() {
