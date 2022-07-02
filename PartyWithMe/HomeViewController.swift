@@ -149,13 +149,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func signOutButton(_ sender: UIButton) {
         saveUserLoggedOut() // save logged-out param
-        transitionToFirstView() // back to first view
     }
     
     func saveUserLoggedOut() {
         UserDefaults.standard.set(false, forKey: "isLoggedIn")
         UserDefaults.standard.set(nil, forKey: "userJson")
         UserDefaults.standard.synchronize()
+        transitionToFirstView() // back to first view
     }
     
     func transitionToFirstView() {

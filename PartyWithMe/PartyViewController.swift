@@ -33,8 +33,8 @@ class PartyViewController: UIViewController {
     
     let ref = Database.database(url: Constants.databaseLink).reference()
     
-    lazy var background: DispatchQueue = {
-        return DispatchQueue.init(label: "background.queue", attributes: .concurrent)
+    lazy var loadListData: DispatchQueue = {
+        return DispatchQueue.init(label: "loadListData.queue", attributes: .concurrent)
     }()
 
     lazy var loadPartyAgain: DispatchQueue = {
@@ -97,7 +97,7 @@ class PartyViewController: UIViewController {
         downloadTask.resume()
         
         // set list of people
-        self.background.async {
+        self.loadListData.async {
             // first load data
             self.listOfPeople = self.loadListOfPeopleData()
             DispatchQueue.main.async {
@@ -295,7 +295,6 @@ class PartyViewController: UIViewController {
     }
     
     @IBAction func goBackButton(_ sender: UIButton) {
-        //dismiss(animated: true, completion: nil)
         transitionToHomeView()
     }
     
