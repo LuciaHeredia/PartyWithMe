@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseStorage
+import DropDown
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -15,10 +16,23 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var partysList: UITableView!
     
+    @IBOutlet weak var cityDropDown: UIView!
+    @IBOutlet weak var cityLabelDropDown: UILabel!
+    
+    @IBOutlet weak var dateDropDown: UIView!
+    @IBOutlet weak var dateLabelDropDown: UILabel!
+    
+    let cityDropDownModule = DropDown()
+    let dateDropDownModule = DropDown()
+    
     var user: User? = nil
     
     // empty array of partys
     var allPartys = [Party]()
+    
+    // filter arrays
+    var allCitys = [String]()
+    var allDates = [String]()
     
     let imageEnding = ".jpg"
     let twelveMB : Int64 = 1024 * 1024 * 12
@@ -42,6 +56,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             // first load data
             self.allPartys = self.loadPartysData()
             DispatchQueue.main.async {
+                // load filter arrays
+                self.cityDropDownModule.anchorView = self.cityDropDown
+                self.cityDropDownModule.dataSource = self.allCitys
+                self.dateDropDownModule.anchorView = self.dateDropDown
+                self.dateDropDownModule.dataSource = self.allDates
+                
                 // hide spinner
                 self.spinner.stopAnimating()
                 self.spinner.isHidden = true
@@ -96,6 +116,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
                 // add to list
                 partys.append(party)
+                
+                // add to filter arrays
+                self.allCitys.append(city)
+                self.allDates.append(date)
  
             }
             group.leave()
@@ -181,6 +205,61 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         DispatchQueue.main.asyncAfter(deadline: when) {
             alert.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    func filterBy() {
+        
+        // filter by city only
+        if self.cityLabelDropDown.text != Constants.filterNames.city &&
+            self.dateLabelDropDown.text == Constants.filterNames.date {
+            
+        }
+        
+        // filter by date only
+        else if self.cityLabelDropDown.text == Constants.filterNames.city &&
+                self.dateLabelDropDown.text != Constants.filterNames.date {
+        }
+        
+        else { // filter by city and date
+            
+        }
+        
+        // reload list again
+        
+    }
+    
+    @IBAction func showCityList(_ sender: UIButton) {
+        if !allCitys.isEmpty {
+            cityDropDownModule.show()
+            
+            cityDropDownModule.direction = .bottom
+            cityDropDownModule.bottomOffset = CGPoint(x: 0, y:(cityDropDownModule.anchorView?.plainView.bounds.height)!)
+            
+            cityDropDownModule.selectionAction = { [unowned self] (index: Int, item: String) in
+                self.cityLabelDropDown.text = allCitys[index]
+                filterBy()
+            }
+        }
+    }
+    
+    @IBAction func showDateList(_ sender: UIButton) {
+        if !allDates.isEmpty {
+            dateDropDownModule.show()
+            
+            dateDropDownModule.direction = .bottom
+            dateDropDownModule.bottomOffset = CGPoint(x: 0, y:(dateDropDownModule.anchorView?.plainView.bounds.height)!)
+            
+            dateDropDownModule.selectionAction = { [unowned self] (index: Int, item: String) in
+                self.dateLabelDropDown.text = allDates[index]
+                filterBy()
+            }
+        }
+        
+    }
+    
+    @IBAction func clearFilter(_ sender: UIButton) {
+        self.cityLabelDropDown.text = Constants.filterNames.city
+        self.dateLabelDropDown.text = Constants.filterNames.date
     }
     
 }

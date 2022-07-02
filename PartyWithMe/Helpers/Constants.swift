@@ -34,6 +34,11 @@ struct Constants {
         static let list = "list"
     }
     
+    struct filterNames {
+        static let city = "City"
+        static let date = "Date"
+    }
+    
     struct ErrorMsg {
         
         // SIGN IN
