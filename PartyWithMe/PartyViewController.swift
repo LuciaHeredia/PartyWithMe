@@ -101,7 +101,6 @@ class PartyViewController: UIViewController {
             // first load data
             self.listOfPeople = self.loadListOfPeopleData()
             DispatchQueue.main.async {
-                print(self.listOfPeople)
                 self.disableAddMeButton()
             }
         }
@@ -298,10 +297,20 @@ class PartyViewController: UIViewController {
         transitionToHomeView()
     }
     
+    @IBAction func goToListButton(_ sender: UIButton) {
+        transitionToListView()
+    }
     
     func transitionToHomeView() {
         let vc = storyboard?.instantiateViewController(withIdentifier: Constants.ViewNames.home) as! HomeViewController
         vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
+    }
+    
+    func transitionToListView() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: Constants.ViewNames.list) as! ListViewController
+        vc.modalPresentationStyle = .fullScreen
+        vc.listOfPeople = listOfPeople
         present(vc, animated: true, completion: nil)
     }
 

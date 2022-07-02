@@ -21,6 +21,7 @@
 		C322B275285D1C6C00AA0FC4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322B274285D1C6C00AA0FC4 /* Utilities.swift */; };
 		C322B27B285D4AC900AA0FC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322B27A285D4AC900AA0FC4 /* Constants.swift */; };
 		C322B27E285D616700AA0FC4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322B27D285D616700AA0FC4 /* User.swift */; };
+		C3363F8F28706F12002928FA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3363F8E28706F12002928FA /* ListViewController.swift */; };
 		C377498A286F269C00DCC453 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3774989286F269C00DCC453 /* CustomTableViewCell.swift */; };
 		C38652BE285E0D640036EC72 /* dance-party.json in Resources */ = {isa = PBXBuildFile; fileRef = C38652BD285E0D640036EC72 /* dance-party.json */; };
 		C38652C0285E24880036EC72 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = C38652BF285E24880036EC72 /* loading.json */; };
@@ -47,6 +48,7 @@
 		C322B274285D1C6C00AA0FC4 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C322B27A285D4AC900AA0FC4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C322B27D285D616700AA0FC4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C3363F8E28706F12002928FA /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		C3774989286F269C00DCC453 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		C38652BD285E0D640036EC72 /* dance-party.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "dance-party.json"; sourceTree = "<group>"; };
 		C38652BF285E24880036EC72 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				C30EB2812851312300E8E7FE /* HomeViewController.swift */,
 				C30EB2832851319B00E8E7FE /* PartyViewController.swift */,
 				C3774989286F269C00DCC453 /* CustomTableViewCell.swift */,
+				C3363F8E28706F12002928FA /* ListViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				C322B275285D1C6C00AA0FC4 /* Utilities.swift in Sources */,
 				C30EB2822851312300E8E7FE /* HomeViewController.swift in Sources */,
 				C322B27E285D616700AA0FC4 /* User.swift in Sources */,
+				C3363F8F28706F12002928FA /* ListViewController.swift in Sources */,
 				C322B27B285D4AC900AA0FC4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -31,6 +31,7 @@ struct Constants {
         static let signin = "signin"
         static let home = "home"
         static let party = "party"
+        static let list = "list"
     }
     
     struct ErrorMsg {
