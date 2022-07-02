@@ -12,7 +12,9 @@ struct Party: Codable {
     var name: String = ""
     var date: String = ""
     var day: String = ""
+    var time: String = ""
     var city: String = ""
+    var address: String = ""
     
     var totalAmount: Int = 0
     var currentAmount: Int = 0

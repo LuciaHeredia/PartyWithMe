@@ -11,15 +11,18 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     var listOfPeople = [String]()
     var partyNameStr: String = ""
+    var currentAmountStr: String = ""
     
+    @IBOutlet weak var currentAmount: UILabel!
     @IBOutlet weak var partyName: UILabel!
     @IBOutlet weak var personsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // set title
+        // set labels
         partyName.text = partyNameStr
+        currentAmount.text = currentAmountStr
         
         personsTableView.dataSource = self
         personsTableView.delegate = self

@@ -14,7 +14,9 @@ class PartyViewController: UIViewController {
     @IBOutlet weak var partyNameLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var partyImage: UIImageView!
     @IBOutlet weak var imageSpinner: UIActivityIndicatorView!
@@ -75,7 +77,9 @@ class PartyViewController: UIViewController {
         partyNameLabel.text = party.name
         dayLabel.text = party.day
         dateLabel.text = party.date
+        timeLabel.text = party.time
         cityLabel.text = party.city
+        addressLabel.text = party.address
         amountLabel.text = String(party.currentAmount) + "/" + String(party.totalAmount)
         descriptionLabel.text = party.description
         
@@ -174,7 +178,9 @@ class PartyViewController: UIViewController {
             let partyName = value?["name"] as? String ?? ""
             let partyDate = value?["date"] as? String ?? ""
             let partyDay = value?["day"] as? String ?? ""
+            let partyTime = value?["time"] as? String ?? ""
             let partyCity = value?["city"] as? String ?? ""
+            let partyAddress = value?["address"] as? String ?? ""
             let partyTotalAmount = value?["totalAmount"] as? Int ?? 0
             let partyCurrentAmount = value?["currentAmount"] as? Int ?? 0
             let partyDescription = value?["description"] as? String ?? ""
@@ -182,7 +188,7 @@ class PartyViewController: UIViewController {
             let partyIdImage = value?["idImage"] as? String ?? ""
             
             // add to party
-            partyCurrentData = Party(id: partyId, name: partyName, date: partyDate, day: partyDay, city: partyCity, totalAmount: partyTotalAmount, currentAmount: partyCurrentAmount, description: partyDescription, idList: partyIdList, idImage: partyIdImage)
+            partyCurrentData = Party(id: partyId, name: partyName, date: partyDate, day: partyDay, time: partyTime, city: partyCity, address: partyAddress, totalAmount: partyTotalAmount, currentAmount: partyCurrentAmount, description: partyDescription, idList: partyIdList, idImage: partyIdImage)
             
             group.leave()
             
@@ -312,6 +318,7 @@ class PartyViewController: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         vc.listOfPeople = listOfPeople
         vc.partyNameStr = party.name
+        vc.currentAmountStr = amountLabel.text!
         present(vc, animated: true, completion: nil)
     }
 

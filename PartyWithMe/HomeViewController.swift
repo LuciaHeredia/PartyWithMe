@@ -111,7 +111,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let name = dict["name"] as? String ?? ""
                 let date = dict["date"] as? String ?? ""
                 let day = dict["day"] as? String ?? ""
+                let time = dict["time"] as? String ?? ""
                 let city = dict["city"] as? String ?? ""
+                let address = dict["address"] as? String ?? ""
                 let totalAmount = dict["totalAmount"] as? Int ?? 0
                 let currentAmount = dict["currentAmount"] as? Int ?? 0
                 let description = dict["description"] as? String ?? ""
@@ -119,14 +121,32 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let idList = dict["idList"] as? String ?? ""
                 
                 // make Party model
-                let party = Party(id: id, name: name, date: date, day: day, city: city, totalAmount: totalAmount, currentAmount: currentAmount, description: description, idList: idList, idImage: idImage)
+                let party = Party(id: id, name: name, date: date, day: day, time: time, city: city, address: address, totalAmount: totalAmount, currentAmount: currentAmount, description: description, idList: idList, idImage: idImage)
 
                 // add to list
                 partys.append(party)
                 
-                // add to filter arrays
-                self.allCitys.append(city)
-                self.allDates.append(date)
+                // add to city filter array
+                var enterCity: Bool = true
+                for cityParty in self.allCitys {
+                    if city == cityParty {
+                        enterCity = false
+                    }
+                }
+                if enterCity {
+                    self.allCitys.append(city)
+                }
+                
+                // add to date filter array
+                var enterDate: Bool = true
+                for dateParty in self.allDates {
+                    if date == dateParty {
+                        enterDate = false
+                    }
+                }
+                if enterDate {
+                    self.allDates.append(date)
+                }
  
             }
             group.leave()
@@ -149,7 +169,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.partyNameLabel.text = party.name
         cell.dayLabel.text = party.day
         cell.dateLabel.text = party.date
+        cell.timeLabel.text = party.time
         cell.cityLabel.text = party.city
+        cell.addressLabel.text = party.address
         cell.amountLabel.text = String(party.currentAmount) + "/" + String(party.totalAmount)
         
         // set image from storage
@@ -172,7 +194,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         partysList.deselectRow(at: indexPath, animated: true)
         
         // send party selected to Party view
-        let p:Party = allPartys[indexPath.row]
+        let p:Party = filteredAllPartys[indexPath.row]
         let encodedData = try! JSONEncoder().encode(p)
         let jsonString = String(data: encodedData, encoding: .utf8)
         transitionToPartyView(partyJson: jsonString!)
