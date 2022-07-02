@@ -27,8 +27,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var user: User? = nil
     
-    // empty array of partys
+    // empty array of partys - original
     var allPartys = [Party]()
+    
+    // array of partys - for filter
+    var filteredAllPartys = [Party]()
     
     // filter arrays
     var allCitys = [String]()
@@ -65,6 +68,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 // hide spinner
                 self.spinner.stopAnimating()
                 self.spinner.isHidden = true
+                
+                // list
+                self.noFilteredList()
+                
                 // table list
                 self.partysList.dataSource = self
                 self.partysList.delegate = self
@@ -133,11 +140,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allPartys.count
+        return filteredAllPartys.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let party = allPartys[indexPath.row]
+        let party = filteredAllPartys[indexPath.row]
         let cell = partysList.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         cell.partyNameLabel.text = party.name
         cell.dayLabel.text = party.day
@@ -207,25 +214,47 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    func noFilteredList() {
+        filteredAllPartys = allPartys
+    }
+    
     func filterBy() {
+        var filteredListPartys = [Party]()
         
         // filter by city only
         if self.cityLabelDropDown.text != Constants.filterNames.city &&
             self.dateLabelDropDown.text == Constants.filterNames.date {
-            
+            for party in allPartys {
+                if party.city == self.cityLabelDropDown.text {
+                    filteredListPartys.append(party)
+                }
+            }
         }
         
         // filter by date only
         else if self.cityLabelDropDown.text == Constants.filterNames.city &&
                 self.dateLabelDropDown.text != Constants.filterNames.date {
+            for party in allPartys {
+                if party.date == self.dateLabelDropDown.text {
+                    filteredListPartys.append(party)
+                }
+            }
         }
         
         else { // filter by city and date
-            
+            for party in allPartys {
+                if party.city == self.cityLabelDropDown.text &&
+                    party.date == self.dateLabelDropDown.text {
+                    filteredListPartys.append(party)
+                }
+            }
         }
         
-        // reload list again
-        
+        // reload table
+        filteredAllPartys = filteredListPartys
+        self.partysList.dataSource = self
+        self.partysList.delegate = self
+        self.partysList.reloadData()
     }
     
     @IBAction func showCityList(_ sender: UIButton) {
@@ -260,6 +289,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBAction func clearFilter(_ sender: UIButton) {
         self.cityLabelDropDown.text = Constants.filterNames.city
         self.dateLabelDropDown.text = Constants.filterNames.date
+        // list
+        self.noFilteredList()
+        // reload table
+        self.partysList.dataSource = self
+        self.partysList.delegate = self
+        self.partysList.reloadData()
     }
     
 }
