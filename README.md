@@ -1,5 +1,5 @@
 # PartyWithMe
-Social App in Swift, Xcode.
+Social App for party search and attendance.
 
 ## Created with:
 * Xcode: Swift.
